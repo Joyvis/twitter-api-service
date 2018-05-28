@@ -1,0 +1,3 @@
+RUN export http_proxy=http://spoflpxy0003.indusval.com.br:8080
+RUN export https_proxy=http://spoflpxy0003.indusval.com.br:8080 /etc/environment
+http_proxy=http://spoflpxy0003.indusval.com.br:8080 /etc/environment

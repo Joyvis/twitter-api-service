@@ -1,0 +1,15 @@
+twitter_api_service:
+  build: .
+  command:
+    - /bin/sh
+    - -c
+    - |
+      rm -rf tmp/pids
+      bundle exec rake db:migrate
+      bundle exec rails s -p ${RAILS_PORT} -b ${RAILS_BIND}
+  volumes:
+    - .:/twitter_api_service
+  ports:
+    - "${RAILS_PORT}:${RAILS_PORT}"
+  env_file:
+    - '.env'
