@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-class TweepsRepository
+class TwitterRepository
   class << self
     def list_tweets(screen_name:)
-      tweets = TweepsService.search_tweets_by_screen_name screen_name
+      tweets = TwitterService.search_tweets_by_screen_name screen_name
       tweets.map do |tweet|
-        TweepsEntity.new filter_tweets_attr(tweet)
+        TwitterEntity.new filter_tweets_attr(tweet)
       end
     end
 

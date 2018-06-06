@@ -10,13 +10,21 @@ class FilterTweets
     new.list
   end
 
+  def self.list_by_user
+    new.list_by_user
+  end
+
   def initialize
-    @tweets = TweepsRepository.list_tweets(screen_name: SCREEN_NAME_SEARCHED)
+    @tweets = TwitterRepository.list_tweets(screen_name: SCREEN_NAME_SEARCHED)
   end
 
   def list
     remove_in_reply
     order_tweets
+  end
+
+  def list_by_user
+    remove_in_reply
   end
 
   private

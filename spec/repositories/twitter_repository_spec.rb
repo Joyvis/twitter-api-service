@@ -2,13 +2,18 @@
 
 require 'rails_helper'
 
-RSpec.describe FilterTweets::MostRelevants, vcr: true do
+RSpec.describe TwitterRepository do
   describe '.most_mentions_tweets' do
-    subject { described_class.list }
+    before do
+      allow(TwitterService).to receive(:search_tweets_by_screen_name)
+    end
+
+    let(:screen_name){ ENV['TWITTER_SEARCH_SCREEN_NAME'] }
+
+    subject { described_class.list_tweets screen_name: screen_name }
 
     context 'with valid params' do
       it 'tweets listed' do
-        binding.pry
         subject
       end
     end

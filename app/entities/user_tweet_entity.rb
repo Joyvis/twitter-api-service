@@ -1,10 +1,7 @@
 # frozen_string_literal: true
 
-class TweepsEntity
-  ATTRS = %i[
-    screen_name followers_count retweet_count favorite_count text created_at
-    profile_link link in_reply_to_user_id
-  ].freeze
+class UserTweetEntity
+  ATTRS = %i[user_id screen_name tweeps_list].freeze
 
   ATTRS.each { |item| attr_reader item }
 

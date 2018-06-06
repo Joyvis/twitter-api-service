@@ -1,16 +1,15 @@
 # frozen_string_literal: true
 
-class TweepsService < Service
+class TwitterService < Service
   class << self
-    URL_BASE = ENV['TWEEPS_SERVICE'].to_s
-    SEARCHED_USER_ID = ENV['TWEEPS_SEARCH_USER_ID'].to_i
+    URL_BASE = ENV['TWITTER_SERVICE'].to_s
+    SEARCHED_USER_ID = ENV['TWITTER_SEARCH_USER_ID'].to_i
 
     def search_tweets_by_screen_name(screen_name)
       tweets = get(url: "#{URL_BASE}/search/tweets.json?q=%40#{screen_name}",
                    headers: default_header)['statuses']
       # Mesmo passando parametros a API retorna tweets sem a menção
       # Filtro manual para listar somente os tweets que fazem menção
-      binding.pry
       filter_tweets tweets
     end
 

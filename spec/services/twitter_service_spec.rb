@@ -2,9 +2,10 @@
 
 require 'rails_helper'
 
-RSpec.describe TweepsRepository, vcr: true do
+RSpec.describe TwitterService, vcr: true do
   describe '.most_mentions_tweets' do
-    subject { described_class.list_tweets }
+    let(:screen_name){ ENV['TWITTER_SEARCH_SCREEN_NAME'] }
+    subject { described_class.search_tweets_by_screen_name screen_name }
 
     context 'with valid params' do
       it 'tweets listed' do
