@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 class UserTweetEntity
-  ATTRS = %i[user_id screen_name tweeps_list].freeze
+  ATTRS = %i[screen_name tweets].freeze
 
-  ATTRS.each { |item| attr_reader item }
+  ATTRS.each { |item| attr_accessor item }
 
   def self.attributes
     ATTRS

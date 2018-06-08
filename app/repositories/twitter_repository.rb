@@ -5,11 +5,32 @@ class TwitterRepository
     def list_tweets(screen_name:)
       tweets = TwitterService.search_tweets_by_screen_name screen_name
       tweets.map do |tweet|
-        TwitterEntity.new filter_tweets_attr(tweet)
+        TweetEntity.new filter_tweets_attr(tweet)
+      end
+    end
+
+    def list_tweets_by_user(screen_name:)
+      tweets = TwitterService.search_tweets_by_screen_name(screen_name)
+      tweets_user = filter_tweets_user_attr tweets
+      tweets_user.keys.map do |key|
+        UserTweetEntity.new(screen_name: key, tweets: tweets_user[key])
       end
     end
 
     private_class_method
+
+    def filter_tweets_user_attr(tweets)
+      tweets_by_user = {}
+      tweets.each do |tweet|
+        twitter_entity = TweetEntity.new filter_tweets_attr(tweet)
+        unless tweets_by_user[twitter_entity.screen_name].present?
+          tweets_by_user[twitter_entity.screen_name] = []
+        end
+        tweets_by_user[twitter_entity.screen_name] << twitter_entity
+      end
+      tweets_by_user
+    end
+
 
     def filter_tweets_attr(tweet)
       { screen_name: tweet['user']['screen_name'],
