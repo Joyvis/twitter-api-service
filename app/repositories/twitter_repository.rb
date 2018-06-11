@@ -31,7 +31,6 @@ class TwitterRepository
       tweets_by_user
     end
 
-
     def filter_tweets_attr(tweet)
       { screen_name: tweet['user']['screen_name'],
         followers_count: tweet['user']['followers_count'],

@@ -36,8 +36,9 @@ RSpec.describe TweetRules, type: :business do
     context 'tweets ordered by followers, favorites and retweets count' do
       before do
         tweets << build(:tweet_entity, followers_count: 999,
-          retweet_count: 998, favorite_count: 997)
-        tweets << build(:tweet_entity, followers_count: 999, retweet_count: 998)
+                                       retweet_count: 998, favorite_count: 997)
+        tweets << build(:tweet_entity, followers_count: 999,
+                                       retweet_count: 998)
         tweets << build(:tweet_entity, followers_count: 999)
       end
 

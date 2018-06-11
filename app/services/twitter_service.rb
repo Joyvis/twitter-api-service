@@ -8,8 +8,8 @@ class TwitterService < Service
     def search_tweets_by_screen_name(screen_name)
       tweets = get(url: "#{URL_BASE}/search/tweets.json?q=%40#{screen_name}",
                    headers: default_header)['statuses']
-      # Mesmo passando parametros a API retorna tweets sem a menção
-      # Filtro manual para listar somente os tweets que fazem menção
+      # Mesmo passando parametros a API retorna tweets sem a mencao
+      # Filtro manual para listar somente os tweets que fazem mencao
       filter_tweets tweets
     end
 
@@ -20,8 +20,8 @@ class TwitterService < Service
     end
 
     def filter_tweets(tweets)
-      tweets.reject do |tweet|
-        !mention_list(tweet).include? SEARCHED_USER_ID
+      tweets.select do |tweet|
+        mention_list(tweet).include? SEARCHED_USER_ID
       end
     end
 

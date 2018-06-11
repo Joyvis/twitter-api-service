@@ -8,10 +8,6 @@ class TweetEntity
 
   ATTRS.each { |item| attr_reader item }
 
-  def self.attributes
-    ATTRS
-  end
-
   def initialize(attrs = {})
     ATTRS.each { |key| instance_variable_set("@#{key}", attrs[key]) }
   end

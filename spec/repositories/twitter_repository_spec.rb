@@ -8,10 +8,10 @@ RSpec.describe TwitterRepository do
       to receive(:search_tweets_by_screen_name).and_return(tweets)
   end
 
-  let(:screen_name){ ENV['TWITTER_SEARCH_SCREEN_NAME'] }
+  let(:screen_name) { ENV['TWITTER_SEARCH_SCREEN_NAME'] }
   let(:tweet) do
     { 'user' => { 'screen_name' => 'teste', 'followers_count' => 10 },
-      'retweet_count' => 9, 'favorite_count' => 8 , 'text' => 'aa @locaweb',
+      'retweet_count' => 9, 'favorite_count' => 8, 'text' => 'aa @locaweb',
       'created_at' => 'Mon Sep 24 03:35:21 +0000 2012',
       'in_reply_to_user_id' => 22 }
   end
@@ -29,8 +29,10 @@ RSpec.describe TwitterRepository do
   end
 
   describe '.list_tweets_by_user' do
-    let(:tweets) { [tweet.merge({ 'user' => { 'screen_name' => 'teste2'} }),
-                    tweet, tweet] }
+    let(:tweets) do
+      [tweet.merge('user' => { 'screen_name' => 'teste2' }), tweet, tweet]
+    end
+
     subject { described_class.list_tweets_by_user screen_name: screen_name }
 
     context 'with tweets of different users' do

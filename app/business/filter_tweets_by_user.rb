@@ -9,7 +9,7 @@ class FilterTweetsByUser < TweetRules
 
   def initialize
     @user_tweets = TwitterRepository.
-      list_tweets_by_user(screen_name: SCREEN_NAME_SEARCHED)
+                   list_tweets_by_user(screen_name: SCREEN_NAME_SEARCHED)
   end
 
   def list
