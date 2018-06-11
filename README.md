@@ -1,24 +1,12 @@
-# README
+# Estrutura de exemplo para criação de APIs
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Execução via docker:
 
-Things you may want to cover:
+```shell
+docker run -T twitter_api_service
+```
 
-* Ruby version
+## Execução sem docker:
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Exportar variáveis de ambiente que estão no arquivo .env;
+* Executar comando desejado no terminal (rails s, rspec, etc);
