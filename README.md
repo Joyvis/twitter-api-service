@@ -3,10 +3,11 @@
 ## Execução via docker:
 
 ```shell
-docker run -T twitter_api_service
+docker run -itP twitter_api_service
 ```
 
 ## Execução sem docker:
 
-* Exportar variáveis de ambiente que estão no arquivo .env;
-* Executar comando desejado no terminal (rails s, rspec, etc);
+1. Exportar variáveis de ambiente que estão no arquivo .env;
+2. Executar comando desejado no terminal (rails s, rspec, etc);
+
