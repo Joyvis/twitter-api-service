@@ -11,7 +11,7 @@ RUN mkdir -p /twitter_api_service
 WORKDIR /twitter_api_service
 
 COPY Gemfile Gemfile.lock ./
-RUN gem install bundler && bundle install --jobs 20 --retry 5
+RUN gem install bundler && bundle install
 
 COPY . ./
 
